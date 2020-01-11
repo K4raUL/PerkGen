@@ -48,8 +48,6 @@ function generate() {
     
     var nums = []
     for (var i = 0; i < perks.length; i++) if (perks[i] == '1') nums.push(i)
-    
-    alert(perks + '\n' + nums)
 
     var iter = 0
     while (iter < 4) {
