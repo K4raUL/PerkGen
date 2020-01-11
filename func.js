@@ -12,18 +12,15 @@ function randomInt(min, max) {
 }
 
 function init() {
-    //perks = document.cookie
-    alert(document.cookie)
+    perks = document.cookie
+    alert(perks)
     for (var i = 0; i < perks.length; i++) if (perks[i] == '1') setON(i)
 }
 
 function generate() {
     // save perks to browser cookie
-    //document.cookie = "state = " + perks;
-    document.cookie = "user=John";
-    
-    alert(document.cookie)
-    
+    document.cookie = perks;
+        
     clearRes()
     prk = dec2bin(perks)
     
