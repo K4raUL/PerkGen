@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random perk generator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript" src="func.js"></script>
+</head>
+<body onload="init()">
+		<div style="text-align: center;">
+			<span><button disabled style="border: 2px dashed black; opacity: 1;"><img id = "-100" src="backg.png"></button></span>
+			<span><button disabled style="border: 2px dashed black; opacity: 1;"><img id = "-200" src="backg.png"></button></span>
+			<span><button disabled style="border: 2px dashed black; opacity: 1;"><img id = "-300" src="backg.png"></button></span>
+			<span><button disabled style="border: 2px dashed black; opacity: 1;"><img id = "-400" src="backg.png"></button></span>
+		</div>
+		<p></p>
+		<div style="text-align: center;"><button style="font-size:25px; font-weight: bold; opacity: 1; border: 1px solid black"  onclick="generate()">Roll</button></div>
+		<br><br><br>
+		<div class="wrapper">
+		   <!-- <div><button onclick="window.open('https://deadbydaylight.gamepedia.com/Dwight_Fairfield','_blank')">Dwight Fairfield</button></div> -->
+		   <div><button id="-1" onclick="charac(this.id)">Dwight Fairfield</button></div>
+		   <div><button id="-2" onclick="charac(this.id)">Meg Thomas</button></div>
+		   <div><button id="-3" onclick="charac(this.id)">Claudette Morel</button></div>
+		   <div><button id="-4" onclick="charac(this.id)">Jake Park</button></div>
+		   <div><button id="-5" onclick="charac(this.id)">Nea Carlsson</button></div>
+		   <div><button id="-6" onclick="charac(this.id)">Laurie Strode</button></div>
+		   <div><button id="-7" onclick="charac(this.id)">Ace Visconti</button></div>
+		   <div><button id="-8" onclick="charac(this.id)">Bill Overbeck</button></div>
+		   <div><button id="-9" onclick="charac(this.id)">Feng Min</button></div>
+		   <div><button id="-10" onclick="charac(this.id)">David King</button></div>
+		</div>
+		<p></p>
+		<div class="wrapper">
+		    <div><button id="0" title="Bond" onclick="perk(this.id)"><img src="Dbd-survivor-perk-bond.png"></button></div>
+			<div><button id="3" title="Quick and quiet" onclick="perk(this.id)"><img src="Dbd-survivor-perk-quickandquiet.png"></button></div>
+			<div><button id="6" title="Empathy" onclick="perk(this.id)"><img src="Dbd-survivor-perk-empathy.png"></button></div>
+			<div><button id="9" title="Iron Will" onclick="perk(this.id)"><img src="Dbd-survivor-perk-ironwill.png"></button></div>
+			<div><button id="12" title="Balanced landing" onclick="perk(this.id)"><img src="Balanced_landing.png"></button></div>
+		    <div><button id="15" title="Sole survivor" onclick="perk(this.id)"><img src="Sole_survivor_icon2.png"></button></div>
+			<div><button id="18" title="Open-handed" onclick="perk(this.id)"><img src="Adb_open_handed.png"></button></div>
+			<div><button id="21" title="Left behind" onclick="perk(this.id)"><img src="Dbd-survivor-perk-leftBehind.png"></button></div>
+			<div><button id="24" title="Technician" onclick="perk(this.id)"><img src="IconPerk_technician_green.png"></button></div>
+			<div><button id="27" title="We're gonna live forever" onclick="perk(this.id)"><img src="Dbd_WGLF_green.png"></button></div>
+		</div>
+		<p></p>
+		<div class="wrapper">
+		    <div><button id="1" title="Prove Thyself" onclick="perk(this.id)"><img src="Dbd-survivor-perk-provetyself.png"></button></div>
+			<div><button id="4" title="Sprint burst" onclick="perk(this.id)"><img src="Dbd-survivor-perk-sprintburst.png"></button></div>
+			<div><button id="7" title="Botany knowledge" onclick="perk(this.id)"><img src="Dbd-survivor-perk-botanyknowledge.png"></button></div>
+			<div><button id="10" title="Calm Spirit" onclick="perk(this.id)"><img src="Dbd-survivor-perk-calmwill.png"></button></div>
+			<div><button id="13" title="Urban Evasion" onclick="perk(this.id)"><img src="Urban_evasion.png"></button></div>
+		    <div><button id="16" title="Object of Obsession" onclick="perk(this.id)"><img src="Object_obsession_icon2.png"></button></div>
+			<div><button id="19" title="Up the Ante" onclick="perk(this.id)"><img src="Uptheante.png"></button></div>
+			<div><button id="22" title="Borrowed Time" onclick="perk(this.id)"><img src="Dbd-survivor-perk-borrowedTime.png"></button></div>
+			<div><button id="25" title="Lithe" onclick="perk(this.id)"><img src="IconPerk_lithe_green.png"></button></div>
+			<div><button id="28" title="Dead hard" onclick="perk(this.id)"><img src="Dbd_deadHard_green.png"></button></div>		   
+		</div>
+		<p></p>
+		<div class="wrapper">
+		    <div><button id="2" title="Leader" onclick="perk(this.id)"><img src="Dbd-survivor-perk-leader.png"></button></div>
+			<div><button id="5" title="Adrenaline" onclick="perk(this.id)"><img src="Dbd-survivor-perk-adrenaline.png"></button></div>
+			<div><button id="8" title="Self-Care" onclick="perk(this.id)"><img src="Dbd-survivor-perk-selfcare.png"></button></div>
+			<div><button id="11" title="Saboteur" onclick="perk(this.id)"><img src="Dbd-survivor-perk-saboteur.png"></button></div>
+			<div><button id="14" title="Streetwise" onclick="perk(this.id)"><img src="Streetwise.png"></button></div>
+		    <div><button id="17" title="Decisive Strike" onclick="perk(this.id)"><img src="Decisive_strike.png"></button></div>
+			<div><button id="20" title="Ace in the Hole" onclick="perk(this.id)"><img src="Aceinthehole.png"></button></div>
+			<div><button id="23" title="Unbreakable" onclick="perk(this.id)"><img src="Dbd-survivor-perk-unbreakable.png"></button></div>
+			<div><button id="26" title="Alert" onclick="perk(this.id)"><img src="IconPerk_alert_green.png"></button></div>
+			<div><button id="29" title="No Mither" onclick="perk(this.id)"><img src="Dbd_NoMither_green.png"></button></div>	
+		</div>
+		<br><br><br>
+		<div class="wrapper">
+		   <div><button id="-11" onclick="charac(this.id)">Quentin Smith</button></div>
+		   <div><button id="-12" onclick="charac(this.id)">David Tapp</button></div>
+		   <div><button id="-13" onclick="charac(this.id)">Kate Denson</button></div>
+		   <div><button id="-14" onclick="charac(this.id)">Adam Francis</button></div>
+		   <div><button id="-15" onclick="charac(this.id)">Jeff Johansen</button></div>
+		   <div><button id="-16" onclick="charac(this.id)">Jane Romero</button></div>
+		   <div><button id="-17" onclick="charac(this.id)">Ash Williams</button></div>
+		   <div><button id="-18" onclick="charac(this.id)">Nancy Wheeler</button></div>
+		   <div><button id="-19" onclick="charac(this.id)">Steve Harrington</button></div>
+		   <div><button id="-20" onclick="charac(this.id)">Yui Kimura</button></div>
+		</div>
+		<p></p>
+		<div class="wrapper">
+		    <div><button id="30" title="Wake Up!" onclick="perk(this.id)"><img src="Dbd_survPerk_wakeup.png"></button></div>
+			<div><button id="33" title="Tenacity" onclick="perk(this.id)"><img src="Dbd-perk-tenacity.png"></button></div>
+			<div><button id="36" title="Dance With Me" onclick="perk(this.id)"><img src="Icg_danceWithMe.png"></button></div>
+			<div><button id="39" title="Diversion" onclick="perk(this.id)"><img src="IconPerks_diversion_green.png"></button></div>
+			<div><button id="42" title="Breakdown" onclick="perk(this.id)"><img src="Icg_breakdown.png"></button></div>
+		    <div><button id="45" title="Solidarity" onclick="perk(this.id)"><img src="Ic_solidarity_green.png"></button></div>
+			<div><button id="48" title="Flip-Flop" onclick="perk(this.id)"><img src="Ic_flipFlop_gr.png"></button></div>
+			<div><button id="51" title="Better Tohether" onclick="perk(this.id)"><img src="IconPerks_betterTogether_green.png"></button></div>
+			<div><button id="54" title="Babysitter" onclick="perk(this.id)"><img src="Ic_babySitter_green.png"></button></div>
+			<div><button id="57" title="Lucky Break" onclick="perk(this.id)"><img src="Ic_luckyBreak_green.png"></button></div>
+		</div>
+		<p></p>
+		<div class="wrapper">
+		    <div><button id="31" title="Pharmacy" onclick="perk(this.id)"><img src="Dbd_survPerk_pharmacy.png"></button></div>
+			<div><button id="34" title="Detective's Hunch" onclick="perk(this.id)"><img src="Dbd-perk-detectiveshunch.png"></button></div>
+			<div><button id="37" title="Windows of Opportunity" onclick="perk(this.id)"><img src="Icg_windowsOfOpportunity.png"></button></div>
+			<div><button id="40" title="Deliverance" onclick="perk(this.id)"><img src="IconPerks_deliverance_green.png"></button></div>
+			<div><button id="43" title="Aftercare" onclick="perk(this.id)"><img src="Icg_aftercare.png"></button></div>
+		    <div><button id="46" title="Poised" onclick="perk(this.id)"><img src="Ic_poised_green.png"></button></div>
+			<div><button id="49" title="Buckle Up" onclick="perk(this.id)"><img src="Ic_buckleUp_gr.png"></button></div>
+			<div><button id="52" title="Fixated" onclick="perk(this.id)"><img src="IconPerks_fixated_green.png"></button></div>
+			<div><button id="55" title="Camaraderie" onclick="perk(this.id)"><img src="Ic_camaraderie_green.png"></button></div>
+			<div><button id="58" title="Any Means Necessary" onclick="perk(this.id)"><img src="Ic_anyMeansNecessary_green.png"></button></div>		   
+		</div>
+		<p></p>
+		<div class="wrapper">
+		    <div><button id="32" title="Vigil" onclick="perk(this.id)"><img src="Dbd_survPerk_vigil.png"></button></div>
+			<div><button id="35" title="Stake Out" onclick="perk(this.id)"><img src="Dbd-perk-stakeout.png"></button></div>
+			<div><button id="38" title="Boil Over" onclick="perk(this.id)"><img src="Icg_boilOver.png"></button></div>
+			<div><button id="41" title="Autodidact" onclick="perk(this.id)"><img src="IconPerks_autodidact_green.png"></button></div>
+			<div><button id="44" title="Distortion" onclick="perk(this.id)"><img src="Icg_distortion.png"></button></div>
+		    <div><button id="47" title="Head On" onclick="perk(this.id)"><img src="Ic_headOn_green.png"></button></div>
+			<div><button id="50" title="Mettle of Man" onclick="perk(this.id)"><img src="Ic_mettleOfMan_gr.png"></button></div>
+			<div><button id="53" title="Inner Strength" onclick="perk(this.id)"><img src="IconPerks_innerStrength_green.png"></button></div>
+			<div><button id="56" title="Second Wind" onclick="perk(this.id)"><img src="Ic_secondWind_green.png"></button></div>
+			<div><button id="59" title="Breakout" onclick="perk(this.id)"><img src="Ic_breakout_green.png"></button></div>	
+		</div>   
+        <br><br><br>
+		<div class="wrapper">
+		   <div><button id="-21" style="font-size:20px;" onclick="charac(this.id)">COMMON</button></div>
+		</div>
+		<p></p>
+		<div class="wrapper">
+		    <div><button id="60" title="Dark Sense" onclick="perk(this.id)"><img src="Ic_darkSense_gr.png"></button></div>
+			<div><button id="63" title="dejaVu" onclick="perk(this.id)"><img src="Ic_dejaVu_gr.png"></button></div>
+			<div><button id="66" title="Hope" onclick="perk(this.id)"><img src="Ic_hope_gr.png"></button></div>
+			<div><button id="69" title="Kindred" onclick="perk(this.id)"><img src="Ic_kindred_gr.png"></button></div>
+			<div><button id="72" title="Lightweight" onclick="perk(this.id)"><img src="Ic_lightweight_gr.png"></button></div>
+		</div>
+		<p></p>
+		<div class="wrapper">
+		    <div><button id="61" title="This Is Not Happening" onclick="perk(this.id)"><img src="Ic_thisIsNotHappening_gr.png"></button></div>
+			<div><button id="64" title="We'll make it" onclick="perk(this.id)"><img src="Ic_wellMakeIt_gr.png"></button></div>
+			<div><button id="67" title="Premonition" onclick="perk(this.id)"><img src="Ic_premonition_gr.png"></button></div>
+			<div><button id="70" title="Resilience" onclick="perk(this.id)"><img src="Ic_resilience_gr.png"></button></div>
+			<div><button id="73" title="Slippery Meat" onclick="perk(this.id)"><img src="Ic_slipperyMeat_gr.png"></button></div>
+		</div>
+		<p></p>
+		<div class="wrapper">
+		    <div><button id="62" title="Small Game" onclick="perk(this.id)"><img src="Ic_smallGame_gr.png"></button></div>
+			<div><button id="65" title="Spine Chill" onclick="perk(this.id)"><img src="Ic_spineChill_gr.png"></button></div>
+			<div><button id="68" title="No One Left Behind" onclick="perk(this.id)"><img src="Ic_noOneLeftBehind_gr.png"></button></div>
+			<div><button id="71" title="Plunderer's Instinct" onclick="perk(this.id)"><img src="Ic_plunderersInstinct_gr.png"></button></div>
+		</div>
+</div>
+</body>
+</html>
+	
