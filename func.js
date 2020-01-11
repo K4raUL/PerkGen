@@ -1,31 +1,53 @@
-var chars = 0
-var perks = 0
+var chars = []
+var perks = []
 var isON = '1px solid black'
 var isOFF = '1px solid white'
-
-function dec2bin(dec){
-    return (dec >>> 0).toString(2);
-}
 
 function randomInt(min, max) {
 	return min + Math.floor((max - min) * Math.random());
 }
 
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 function init() {
-    perks = document.cookie
-    alert(perks)
-    for (var i = 0; i < perks.length; i++) if (perks[i] == '1') setON(i)
+    
+    //perks = getCookie("perks")
+    for (var i = 0; i < perks.length; i++) if (perks[i] == '1') setON(perks.length-1-i)
+
+    //chars = getCookie("chars")
+    for (var i = 0; i < chars.length; i++) if (chars[i] == '1') {
+        charid = -(chars.length-i)
+        stl0 = document.getElementById(charid).style        
+        
+        stl0.border = isON
+        stl0.opacity = '1'
+        stl0.fontWeight = 'bold'
+    }
 }
 
 function generate() {
     // save perks to browser cookie
-    document.cookie = perks;
+    //document.cookie = "perks=" + perks
+    //document.cookie = "chars=" + chars
         
     clearRes()
-    prk = dec2bin(perks)
     
     var nums = []
-    for (var i = 0; i < prk.length; i++) if (prk[i] == '1') nums.push(prk.length-1-i)
+    for (var i = 0; i < perks.length; i++) if (perks[i] == '1') nums.push(perks.length-1-i)
     
     var iter = 0
     while (iter < 4) {
@@ -54,11 +76,15 @@ function clearRes() {
 }
 
 function charac(oid) {
-    chars ^= 1 << oid
+    var num = Math.abs(oid) - 1
+    
+    if (chars[num] != '1') chars[num] = '1'
+    else chars[num] = '0'
+
     stl0 = document.getElementById(oid).style
     
-    if (oid == -21) {
-        if (chars & (1 << oid)) {
+    if (num == 20) {
+        if (chars[num] == '1') {
             stl0.border = isON
             stl0.opacity = '1'
             stl0.fontWeight = 'bold'
@@ -74,37 +100,34 @@ function charac(oid) {
         }
         return
     }
-    
-	var num = Math.abs(oid) - 1
-    num *= 3
-
-    if (chars & (1 << oid)) {
+  
+    if (chars[num] == '1') {
         stl0.border = isON
         stl0.opacity = '1'
         stl0.fontWeight = 'bold'
         
-        setON(num)
-        setON(num+1)
-        setON(num+2)
+        setON(3*num)
+        setON(3*num+1)
+        setON(3*num+2)
     }
     else {
         stl0.border = isOFF
         stl0.opacity = '0.5'
         stl0.fontWeight = ''
      
-        setOFF(num)
-        setOFF(num+1)
-        setOFF(num+2)
+        setOFF(3*num)
+        setOFF(3*num+1)
+        setOFF(3*num+2)
     }    
 }
 
 function perk(oid) {
-    if (perks & (1 << oid)) setOFF(oid)
+    if (perks[oid] == '1') setOFF(oid)
     else setON(oid)
 }
 
 function setON(id) {
-    perks |= 1 << id
+    perks[id] = '1'
     var stl = document.getElementById(id).style
     
     stl.border = isON
@@ -112,7 +135,7 @@ function setON(id) {
 }
 
 function setOFF(id) {
-    perks &= ~(1 << id)
+    perks[id] = '0'
     var stl = document.getElementById(id).style
     
     stl.border = isOFF
