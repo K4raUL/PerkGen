@@ -26,11 +26,11 @@ function getCookie(cname) {
 function init() {
     
     //perks = getCookie("perks")
-    for (var i = 0; i < perks.length; i++) if (perks[i] == '1') setON(perks.length-1-i)
+    for (var i = 0; i < perks.length; i++) if (perks[i] == '1') setON(i)
 
     //chars = getCookie("chars")
     for (var i = 0; i < chars.length; i++) if (chars[i] == '1') {
-        charid = -(chars.length-i)
+        charid = -(chars.length-i)      // ????
         stl0 = document.getElementById(charid).style        
         
         stl0.border = isON
@@ -47,8 +47,10 @@ function generate() {
     clearRes()
     
     var nums = []
-    for (var i = 0; i < perks.length; i++) if (perks[i] == '1') nums.push(perks.length-1-i)
+    for (var i = 0; i < perks.length; i++) if (perks[i] == '1') nums.push(i)
     
+    alert(perks + '\n' + nums)
+
     var iter = 0
     while (iter < 4) {
         if (!(Array.isArray(nums) && nums.length)) return
