@@ -6,11 +6,23 @@
   <script type="text/javascript" src="func.js"></script>
 </head>
 <body onload="init()">
-		<div style="text-align: center;">
-			<span><button disabled style="border: 2px dashed black; opacity: 1;"><img id = "-100" src="backg.png"></button></span>
-			<span><button disabled style="border: 2px dashed black; opacity: 1;"><img id = "-200" src="backg.png"></button></span>
-			<span><button disabled style="border: 2px dashed black; opacity: 1;"><img id = "-300" src="backg.png"></button></span>
-			<span><button disabled style="border: 2px dashed black; opacity: 1;"><img id = "-400" src="backg.png"></button></span>
+		<div style="text-align: center; position: relative;">
+			<span><button disabled style="border: 2px dashed black; opacity: 1;">
+                <img id = "-100" src="backg.png">
+                <div id = "res1" style="font-size:20px; position: absolute; bottom: 6px; left: 480px;"></div>
+            </button></span>
+			<span><button disabled style="border: 2px dashed black; opacity: 1;">
+                <img id = "-200" src="backg.png">
+                <div id = "res2" style="font-size:20px; position: absolute; bottom: 6px; left: 620px;"></div>
+            </button></span>
+            <span><button disabled style="border: 2px dashed black; opacity: 1;">
+                <img id = "-300" src="backg.png">
+                <div id = "res3" style="font-size:20px; position: absolute; bottom: 6px; left: 760px;"></div>
+            </button></span>
+			<span><button disabled style="border: 2px dashed black; opacity: 1;">
+                <img id = "-400" src="backg.png">
+                <div id = "res4" style="font-size:20px; position: absolute; bottom: 6px; left: 900px;"></div>
+            </button></span>
 		</div>
 		<p></p>
 		<div style="text-align: center;"><button style="font-size:27px; font-weight: bold; opacity: 1; border: 1px solid black"  onclick="generate()" id="rollbtn">Roll (45)</button></div>
