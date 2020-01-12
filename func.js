@@ -12,7 +12,7 @@ function randomInt(min, max) {
 function setCookie(variable, value, expires_days) {
     var d = new Date();
     d = new Date(d.getTime() + 1000 * expires_days * 60 * 60 * 24);
-    document.cookie = variable + '=' + value + '; expires=' + d.toGMTString() + ';';
+    document.cookie = variable + '=' + value + '; expires=' + d.toUTCString() + ';';
 }
 
 function getCookie(cname) {
