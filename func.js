@@ -1,5 +1,6 @@
 var chars = [1, 1, 1, 1, 1, 0, 0, 1, 0, 1,]
-var perks = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,]
+var perks = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,]
+var sum = 22
 var isON = '1px solid black'
 var isOFF = '1px solid white'
 
@@ -132,17 +133,25 @@ function perk(oid) {
 }
 
 function setON(id) {
-    perks[id] = '1'
-    var stl = document.getElementById(id).style
+    if (perks[id] != '1') {
+        sum++
+        perks[id] = '1'
+    }
     
+    document.getElementById("rollbtn").innerHTML = "Roll (" + sum + ")"
+    var stl = document.getElementById(id).style
     stl.border = isON
     stl.opacity = '1'    
 }
 
 function setOFF(id) {
-    perks[id] = '0'
-    var stl = document.getElementById(id).style
-    
+    if (perks[id] == '1') {
+        sum--
+        perks[id] = '0'
+    }
+
+    document.getElementById("rollbtn").innerHTML = "Roll (" + sum + ")"
+    var stl = document.getElementById(id).style    
     stl.border = isOFF
     stl.opacity = '0.5'    
 }
