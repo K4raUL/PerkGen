@@ -34,7 +34,6 @@ function getCookie(cname) {
 function init() {
     // reading statistics from cookies
     stats = getCookie("stats")
-    alert(document.cookie)
     if (!stats) stats = []
     
     //perks = getCookie("perks")
