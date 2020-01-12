@@ -1,11 +1,18 @@
 var chars = [1, 1, 1, 1, 1, 0, 0, 1, 0, 1,]
 var perks = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,]
+var stats = []
 var sum = 22
 var isON = '1px solid black'
 var isOFF = '1px solid white'
 
 function randomInt(min, max) {
 	return min + Math.floor((max - min) * Math.random());
+}
+
+function setCookie(variable, value, expires_days) {
+    var d = new Date();
+    d = new Date(d.getTime() + 1000 * expires_days * 60 * 60 * 24);
+    document.cookie = variable + '=' + value + '; expires=' + d.toGMTString() + ';';
 }
 
 function getCookie(cname) {
@@ -18,13 +25,17 @@ function getCookie(cname) {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
+      return c.substring(name.length, c.length).split(',');
     }
   }
   return "";
 }
 
 function init() {
+    // reading statistics from cookies
+    stats = getCookie("stats")
+    alert(document.cookie)
+    if (!stats) stats = []
     
     //perks = getCookie("perks")
     for (var i = 0; i < perks.length; i++) if (perks[i] == '1') setON(i)
@@ -48,7 +59,6 @@ function init() {
 function generate() {
     // save perks to browser cookie
     //document.cookie = "perks=" + perks
-    //document.cookie = "chars=" + chars
         
     clearRes()
     
@@ -59,15 +69,30 @@ function generate() {
     while (iter < 4) {
         if (!(Array.isArray(nums) && nums.length)) return
         iter++
+        
+        // random position in valid perks list
         var randi = randomInt(0, nums.length)
+        var rid = nums[randi]                                   // html id of new random perk
 
         var res = document.getElementById(-100*iter)
-        var srci = document.getElementById(nums[randi].toString())
+        var srci = document.getElementById(rid.toString())
         res.src = srci.childNodes[0].src
         res.title = srci.title
         
+        // saving statistics
+        if (stats[rid] == undefined) stats[rid] = 1
+        else stats[rid]++
+        
+        // displaying statistics
+        document.getElementById("res" + iter).innerHTML = stats[rid]
+        
+        // erasing perk from list (preventing same perk appearing in the result)
         nums.splice(randi, 1)
     }
+    
+    // saving stats into cookies
+    setCookie("stats", stats, 365);
+    alert(document.cookie)
 }
 
 function clearRes() {
