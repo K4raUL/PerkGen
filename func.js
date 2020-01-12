@@ -84,7 +84,7 @@ function generate() {
         else stats[rid]++
         
         // displaying statistics
-	    alert(stats[rid])
+	alert(stats[rid])
         document.getElementById("res" + iter).innerHTML = stats[rid]
         
         // erasing perk from list (preventing same perk appearing in the result)
