@@ -1,5 +1,5 @@
-var chars = []
-var perks = []
+var chars = [1, 1, 1, 1, 1, 0, 0, 1, 0, 1,]
+var perks = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,]
 var isON = '1px solid black'
 var isOFF = '1px solid white'
 
@@ -30,13 +30,18 @@ function init() {
 
     //chars = getCookie("chars")
     for (var i = 0; i < chars.length; i++) if (chars[i] == '1') {
-        charid = -(chars.length-i)      // ????
+        charid = -(i+1)      // ????
         stl0 = document.getElementById(charid).style        
         
         stl0.border = isON
         stl0.opacity = '1'
         stl0.fontWeight = 'bold'
     }
+    
+    charac(-13)
+    charac(-14)
+    charac(-16)
+    charac(-21)
 }
 
 function generate() {
