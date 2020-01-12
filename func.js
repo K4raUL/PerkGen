@@ -84,6 +84,7 @@ function generate() {
         else stats[rid]++
         
         // displaying statistics
+	    alert(stats[rid])
         document.getElementById("res" + iter).innerHTML = stats[rid]
         
         // erasing perk from list (preventing same perk appearing in the result)
@@ -92,7 +93,7 @@ function generate() {
     
     // saving stats into cookies
     setCookie("stats", stats, 365);
-    alert(document.cookie)
+    //alert(document.cookie)
 }
 
 function clearRes() {
